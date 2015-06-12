@@ -42,8 +42,42 @@ rcsid[] = "$Id: w_wad.c,v 1.5 1997/02/03 16:47:57 b1 Exp $";
 #include "w_wad.h"
 
 
+//
+// TYPES
+//
+typedef struct
+{
+    // Should be "IWAD" or "PWAD".
+    char		identification[4];
+    int			numlumps;
+    int			infotableofs;
+
+} wadinfo_t;
 
 
+typedef struct
+{
+    int			filepos;
+    int			size;
+    char		name[8];
+
+} filelump_t;
+
+//
+// WADFILE I/O related stuff.
+//
+typedef struct
+{
+    char	name[8];
+    int		handle;
+    int		position;
+    int		size;
+} lumpinfo_t;
+
+
+extern	void**		lumpcache;
+extern	lumpinfo_t*	lumpinfo;
+extern	int		numlumps;
 
 
 //
@@ -426,7 +460,13 @@ int W_LumpLength (int lump)
     return lumpinfo[lump].size;
 }
 
+const char* W_LumpName(int lump)
+{
+	 if (lump >= numlumps)
+	I_Error ("W_LumpName: %i >= numlumps",lump);
 
+	 return lumpinfo[lump].name;
+}
 
 //
 // W_ReadLump
