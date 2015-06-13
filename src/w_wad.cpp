@@ -165,13 +165,11 @@ ExtractFileBase
 //  specially to allow map reloads.
 // But: the reload feature is a fragile hack...
 
-#ifdef __BEOS__
 #ifdef __GNUC__
 extern void *alloca(int);
 #else
 #include <alloca.h>
 #endif
-#endif /* __BEOS__ */
 
 int			reloadlump;
 char*			reloadname;
@@ -235,7 +233,7 @@ void W_AddFile (char *filename)
 	header.numlumps = LONG(header.numlumps);
 	header.infotableofs = LONG(header.infotableofs);
 	length = header.numlumps*sizeof(filelump_t);
-	fileinfo = alloca (length);
+	fileinfo = malloc(length);
 	fseek (handle, header.infotableofs, SEEK_SET);
 	fread (fileinfo, 1, length, handle);
 	numlumps += header.numlumps;
@@ -292,7 +290,7 @@ void W_Reload (void)
     lumpcount = LONG(header.numlumps);
     header.infotableofs = LONG(header.infotableofs);
     length = lumpcount*sizeof(filelump_t);
-    fileinfo = alloca (length);
+    fileinfo = malloc(length);
     fseek (handle, header.infotableofs, SEEK_SET);
     fread (fileinfo, 1, length, handle);
     

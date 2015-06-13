@@ -270,6 +270,9 @@ void P_DropWeapon (player_t* player)
 }
 
 
+extern "C"
+{
+
 
 //
 // A_WeaponReady
@@ -334,7 +337,6 @@ A_WeaponReady
 }
 
 
-
 //
 // A_ReFire
 // The player can re-fire the weapon
@@ -360,7 +362,6 @@ void A_ReFire
 	P_CheckAmmo (player);
     }
 }
-
 
 void
 A_CheckReload
@@ -876,4 +877,5 @@ void P_MovePsprites (player_t* player)
     player->psprites[ps_flash].sy = player->psprites[ps_weapon].sy;
 }
 
+}
 

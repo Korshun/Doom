@@ -470,6 +470,8 @@ WritePCXfile
 }
 
 
+extern int access(char *file, int mode);
+
 //
 // M_ScreenShot
 //

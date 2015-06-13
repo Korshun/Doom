@@ -27,10 +27,8 @@
 
 #ifndef __BYTEBOOL__
 #define __BYTEBOOL__
+
 // Fixed to use builtin bool type with C++.
-#ifdef __cplusplus
-typedef bool boolean;
-#else
 #ifdef __BEOS__	/* boolean is a builtin type for MWCC */
 #define boolean D_BOOL
 #undef false
@@ -42,7 +40,7 @@ typedef bool boolean;
 #define boolean int
 #define true 1
 #define false 0
-#endif
+
 typedef unsigned char byte;
 #endif
 
@@ -81,8 +79,7 @@ typedef unsigned char byte;
 #endif
 #endif
 
-
-
+#include <stdlib.h>
 
 #endif
 //-----------------------------------------------------------------------------

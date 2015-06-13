@@ -79,7 +79,8 @@ dirtype_t diags[] =
 };
 
 
-
+extern "C"
+{
 
 
 void A_Fall (mobj_t *actor);
@@ -101,6 +102,7 @@ void A_Fall (mobj_t *actor);
 //
 
 mobj_t*		soundtarget;
+
 
 void
 P_RecursiveSound
@@ -2005,4 +2007,6 @@ void A_PlayerScream (mobj_t* mo)
     }
     
     S_StartSound (mo, sound);
+}
+
 }

@@ -78,10 +78,12 @@ void P_RemoveThinker (thinker_t* thinker);
 //
 // P_PSPR
 //
+extern "C"
+{
 void P_SetupPsprites (player_t* curplayer);
 void P_MovePsprites (player_t* curplayer);
 void P_DropWeapon (player_t* player);
-
+}
 
 //
 // P_USER
@@ -126,7 +128,10 @@ void	P_SpawnPlayerMissile (mobj_t* source, mobjtype_t type);
 //
 // P_ENEMY
 //
+extern "C"
+{
 void P_NoiseAlert (mobj_t* target, mobj_t* emmiter);
+}
 
 
 //

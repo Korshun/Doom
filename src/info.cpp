@@ -56,7 +56,9 @@ char *sprnames[NUMSPRITES] = {
 
 
 // Doesn't work with g++, needs actionf_p1
-void  A_Light0();
+extern "C"
+{
+void A_Light0();
 void A_WeaponReady();
 void A_Lower();
 void A_Raise();
@@ -130,6 +132,7 @@ void A_BrainSpit();
 void A_SpawnSound();
 void A_SpawnFly();
 void A_BrainExplode();
+}
 
 
 state_t	states[NUMSTATES] = {
