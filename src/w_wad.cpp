@@ -141,15 +141,6 @@ void W_AddFile (char *filename)
 	memset(lumpcache, 0, thewad->numLumps() * sizeof(void*));
 }
 
-//
-// W_Reload
-// Flushes any of the reloadable lumps in memory
-//  and reloads the directory.
-//
-void W_Reload (void)
-{
-   // Not supported.
-}
 
 // W_InitMultipleFiles
 // Pass a null terminated list of files to use.
