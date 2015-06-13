@@ -6,7 +6,7 @@ InputError::InputError(std::string location, std::string error)
 	mError = error;
 }
 
-std::string InputError::toString()
+std::string InputError::toString() const
 {
 	return mLocation + ": " + mError;
 }

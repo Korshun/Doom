@@ -8,15 +8,15 @@ class Exception
 {
 public:
 	virtual ~Exception() {}
-	virtual std::string toString() = 0;
+	virtual std::string toString() const = 0;
 };
 
 // Exception class for malformed or failed input.
-class InputError : Exception
+class InputError : public Exception
 {
 public:
 	InputError(std::string location, std::string error);
-	std::string toString();
+	std::string toString() const;
 
 private:
 	std::string mLocation;
