@@ -313,9 +313,3 @@ W_CacheLumpName
 }
 
 
-void W_Profile (void)
-{
-   // Not supported.
-}
-
-
