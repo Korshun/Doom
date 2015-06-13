@@ -30,14 +30,14 @@
 
 // Fixed to use builtin bool type with C++.
 #ifdef __BEOS__	/* boolean is a builtin type for MWCC */
-#define boolean D_BOOL
+#define dboolean D_BOOL
 #undef false
 #define false D_false
 #undef true
 #define true D_true
 #endif
 //typedef enum {false, true} boolean;
-#define boolean int
+#define dboolean int
 #define true 1
 #define false 0
 

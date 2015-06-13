@@ -49,7 +49,7 @@ static SDL_Color *framergb;
 static GLuint frametexture = 0;
 static GLuint uniformTexture = -1;
 
-boolean		grabMouse;// Fake mouse handling.
+dboolean		grabMouse;// Fake mouse handling.
 
 // Returns the smallest power-of-two number that is bigger than the given one.
 int NextPowerOf2(int v)
@@ -381,7 +381,7 @@ void I_InitGraphics(void)
 {
 	void *whatever;
 	int texwidth, texheight;
-    static boolean firsttime = true;
+    static dboolean firsttime = true;
     if (!firsttime)
     	return;
     firsttime = false;
