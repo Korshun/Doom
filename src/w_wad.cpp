@@ -385,6 +385,17 @@ int W_NumLumps (void)
 // Returns -1 if name not found.
 //
 
+char* mystrupr(char *str)
+{
+	while (*str != '\0')
+	{
+		*str = toupper(*str);
+		str++;
+	}
+
+	return str;
+}
+
 int W_CheckNumForName (char* name)
 {
     union {
@@ -404,7 +415,7 @@ int W_CheckNumForName (char* name)
     name8.s[8] = 0;
 
     // case insensitive
-    strupr (name8.s);		
+    mystrupr(name8.s);
 
     v1 = name8.x[0];
     v2 = name8.x[1];

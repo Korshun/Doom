@@ -1276,7 +1276,7 @@ void G_DoSaveGame (void)
     int		i; 
 	
     if (M_CheckParm("-cdrom"))
-	sprintf(name,"c:\\doomdata\\"SAVEGAMENAME"%d.dsg",savegameslot);
+	sprintf(name,"c:\\doomdata\\" SAVEGAMENAME "%d.dsg",savegameslot);
     else
 	sprintf (name,SAVEGAMENAME"%d.dsg",savegameslot); 
     description = savedescription; 
