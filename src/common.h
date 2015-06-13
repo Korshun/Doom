@@ -1,12 +1,13 @@
 #pragma once
 
+#include <cassert>
 #include <cstdio>
 #include <cstdlib>
 
 #include <memory>
+#include <utility>
 
-// Shorthands for smart pointers.
-template <class T, class Deleter> using uniq = std::unique_ptr<T, Deleter>;
+using std::unique_ptr;
 
 // cppformat library.
 #include "format.h"

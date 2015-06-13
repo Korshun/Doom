@@ -1,34 +1,39 @@
-// Emacs style mode select   -*- C++ -*- 
-//-----------------------------------------------------------------------------
-//
-// $Id:$
-//
-// Copyright (C) 1993-1996 by id Software, Inc.
-//
-// This source is available for distribution and/or modification
-// only under the terms of the DOOM Source Code License as
-// published by id Software. All rights reserved.
-//
-// The source is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// FITNESS FOR A PARTICULAR PURPOSE. See the DOOM Source Code License
-// for more details.
-//
-// DESCRIPTION:
-//	WAD I/O functions.
-//
-//-----------------------------------------------------------------------------
+#pragma once
 
+#include "common.h"
 
-#ifndef __W_WAD__
-#define __W_WAD__
+class File;
 
+// Class for wad file reading.
+class Wad
+{
+public:
+	Wad(unique_ptr<File> file);
 
-#ifdef __GNUG__
-#pragma interface
-#endif
+	// Get number of lumps.
+	index_t numLumps() const;
 
+	// Get lump name and size.
+	std::string lumpName(index_t lumpnum) const;
+	index_t lumpSize(index_t lumpnum) const;
 
+	// Read lump to memory.
+	void readLump(index_t lumpnum, void *dest);
+
+private:
+	struct LumpInfo
+	{
+		std::string name;
+		index_t size;
+		index_t dataOffset;
+	};
+
+	unique_ptr<File> mFile;
+	std::vector<LumpInfo> mLumps;
+	index_t mNumLumps;
+};
+
+// Legacy interface.
 void    W_InitMultipleFiles (char** filenames);
 void    W_Reload (void);
 
@@ -41,13 +46,3 @@ void    W_ReadLump (int lump, void *dest);
 
 void*	W_CacheLumpNum (int lump, int tag);
 void*	W_CacheLumpName (char* name, int tag);
-
-
-
-
-#endif
-//-----------------------------------------------------------------------------
-//
-// $Log:$
-//
-//-----------------------------------------------------------------------------

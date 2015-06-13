@@ -14,6 +14,9 @@ public:
 	File(const std::string &path);
 	~File();
 
+	// Get file path.
+	const std::string& path() const;
+
 	// Read `size` bytes from file to `dest`.
 	// If a read fails, the position in the file becomes undefined
 	// and InputError gets thrown.

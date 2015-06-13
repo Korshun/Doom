@@ -17,10 +17,15 @@ File::~File()
 	fclose(mFile);
 }
 
+const std::string& File::path() const
+{
+	return mPath;
+}
+
 void File::read(void *dest, index_t size)
 {
 	assert(size > 0);
-	if ((index_t)fread(dest, size, 1, mFile) != size)
+	if ((index_t)fread(dest, size, 1, mFile) != 1)
 	{
 		throw InputError(mPath, format("failed to read {0} bytes from the file: {1}", size, strerror(errno)));
 	}
