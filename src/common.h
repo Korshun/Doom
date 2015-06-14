@@ -25,8 +25,7 @@ typedef unsigned char byte;
 // Type for array sizes and indices.
 // Made signed for ease of programming.
 // Should be 32-bit or 64-bit depending on the system.
-// TODO: Add ifdef for 64-bit systems.
-typedef int index_t;
+typedef ptrdiff_t index_t;
 
 // Macro for unused parameters.
 #define UNUSED(x) ((void)x)
