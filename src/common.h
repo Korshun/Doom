@@ -30,5 +30,10 @@ typedef ptrdiff_t index_t;
 // Macro for unused parameters.
 #define UNUSED(x) ((void)x)
 
+// A more readable debug define
+#ifndef NDEBUG
+#define DEBUG
+#endif
+
 // These utilities are used everywhere.
 #include "u_exception.h"
