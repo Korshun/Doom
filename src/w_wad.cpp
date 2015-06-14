@@ -1,5 +1,6 @@
 #include "w_wad.h"
 
+#include "w_archive.h"
 #include "io_file_systemfile.h"
 #include "io_file_memoryfile.h"
 
