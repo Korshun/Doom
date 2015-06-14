@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // $Id:$
@@ -161,6 +161,16 @@
 #define HUSTR_E3M8	"E3M8: DIS"
 #define HUSTR_E3M9	"E3M9: CLAPIERS"
 
+#define HUSTR_E4M1 = "E4M1: L'ENFER EN CONTREBAS"
+#define HUSTR_E4M2 = "E4M2: UNE HAINE PARFAITE"
+#define HUSTR_E4M3 = "E4M3: COUPER LE MAL"
+#define HUSTR_E4M4 = "E4M4: LE MAL INDISCIPLINE "
+#define HUSTR_E4M5 = "E4M5: ILS S'EN REPENTIRONT"
+#define HUSTR_E4M6 = "E4M6: CONTRE TOI AVEC MECHANCETE"
+#define HUSTR_E4M7 = "E4M7: ET L'ENFER SUIVI"
+#define HUSTR_E4M8 = "E4M8: UNTO LE CRUEL"
+#define HUSTR_E4M9 = "E4M9: PEUR"
+
 #define HUSTR_1		"NIVEAU 1: ENTREE "
 #define HUSTR_2		"NIVEAU 2: HALLS SOUTERRAINS "
 #define HUSTR_3		"NIVEAU 3: LE FEU NOURRI "
@@ -197,6 +207,71 @@
 #define HUSTR_31	"NIVEAU 31: WOLFENSTEIN"
 #define HUSTR_32	"NIVEAU 32: LE MASSACRE"
 
+#define PHUSTR_1 = "level 1: congo"
+#define PHUSTR_2 = "level 2: la source des ames"
+#define PHUSTR_3 = "level 3: aztec"
+#define PHUSTR_4 = "level 4: mis en cage"
+#define PHUSTR_5 = "level 5: la ville fantome"
+#define PHUSTR_6 = "level 6: le repair des barons"
+#define PHUSTR_7 = "level 7: caughtyard"
+#define PHUSTR_8 = "level 8: le royaume"
+#define PHUSTR_9 = "level 9: abattoire"
+#define PHUSTR_10 = "level 10: l'assault"
+#define PHUSTR_11 = "level 11: traque"
+#define PHUSTR_12 = "level 12: vitesse"
+#define PHUSTR_13 = "level 13: la crypte"
+#define PHUSTR_14 = "level 14: la genese"
+#define PHUSTR_15 = "level 15: le crepuscule"
+#define PHUSTR_16 = "level 16: le presage"
+#define PHUSTR_17 = "level 17: l'enceinte"
+#define PHUSTR_18 = "level 18: la neurosphere"
+#define PHUSTR_19 = "level 19: nme"
+#define PHUSTR_20 = "level 20: le domaine de la mort"
+#define PHUSTR_21 = "level 21: le pourfendeur"
+#define PHUSTR_22 = "level 22: mission impossible"
+#define PHUSTR_23 = "level 23: la pierre tombale"
+#define PHUSTR_24 = "level 24: la frontiere finale"
+#define PHUSTR_25 = "level 25: le temple des tenebres"
+#define PHUSTR_26 = "level 26: bunker"
+#define PHUSTR_27 = "level 27: ante-christ"
+#define PHUSTR_28 = "level 28: l'egout"
+#define PHUSTR_29 = "level 29: l'odyssee des bruits"
+#define PHUSTR_30 = "level 30: la porte de l'enfer"
+#define PHUSTR_31 = "level 31: l'antre des demons-cybernetiques"
+#define PHUSTR_32 = "level 32: On y va!"
+
+#define THUSTR_1 = "level 1: le systeme de controle"
+#define THUSTR_2 = "level 2: le barbecue humain"
+#define THUSTR_3 = "level 3: le controle de l'energie"
+#define THUSTR_4 = "level 4: les trous de vers"
+#define THUSTR_5 = "level 5: la boucle"
+#define THUSTR_6 = "level 6: la saison d'ouverture"
+#define THUSTR_7 = "level 7: la prison"
+#define THUSTR_8 = "level 8: metal"
+#define THUSTR_9 = "level 9: le fief"
+#define THUSTR_10 = "level 10: redemption"
+#define THUSTR_11 = "level 11: le complexe de stockage"
+#define THUSTR_12 = "level 12: le cratere"
+#define THUSTR_13 = "level 13: l'usine de traitement des dechets nucleaires"
+#define THUSTR_14 = "level 14: l'acierie"
+#define THUSTR_15 = "level 15: la zone morte"
+#define THUSTR_16 = "level 16: les echelons les plus bas"
+#define THUSTR_17 = "level 17: la zone de traitement"
+#define THUSTR_18 = "level 18: le moulin"
+#define THUSTR_19 = "level 19: acheminement/production"
+#define THUSTR_20 = "level 20: traitement central"
+#define THUSTR_21 = "level 21: le centre administratif"
+#define THUSTR_22 = "level 22: l'habitat"
+#define THUSTR_23 = "level 23: le projet de mine lunaire"
+#define THUSTR_24 = "level 24: la carrière"
+#define THUSTR_25 = "level 25: l'antre des barons"
+#define THUSTR_26 = "level 26: ballistyx"
+#define THUSTR_27 = "level 27: le mont souffrance"
+#define THUSTR_28 = "level 28: que diable?"
+#define THUSTR_29 = "level 29: le fleuve styx"
+#define THUSTR_30 = "level 30: le dernier appel"
+#define THUSTR_31 = "level 31: pharaon"
+#define THUSTR_32 = "level 32: les caraibbes"
 
 #define HUSTR_CHATMACRO1	"JE SUIS PRET A LEUR EN FAIRE BAVER!"
 #define HUSTR_CHATMACRO2	"JE VAIS BIEN."
@@ -226,8 +301,8 @@
 #define HUSTR_PLRRED		"ROUGE: "
 
 #define HUSTR_KEYGREEN	'g'	// french key should be "V"
-#define HUSTR_KEYINDIGO	'i'	
-#define HUSTR_KEYBROWN	'b'	
+#define HUSTR_KEYINDIGO	'i'
+#define HUSTR_KEYBROWN	'b'
 #define HUSTR_KEYRED		'r'
 
 //
@@ -282,7 +357,7 @@
 "POUR VIVRE LA SUITE DE DOOM, JOUEZ\n"\
 "A 'AUX PORTES DE L'ENFER' ET A\n"\
 "L'EPISODE SUIVANT, 'L'ENFER'!\n"
-				
+
 #define E2TEXT	"VOUS AVEZ REUSSI. L'INFAME DEMON\n"\
 "QUI CONTROLAIT LA BASE LUNAIRE DE\n"\
 "DEIMOS EST MORT, ET VOUS AVEZ\n"\
