@@ -1,29 +1,29 @@
 #include "common.h"
-#include "io_lump_memory.h"
+#include "io_file_memoryfile.h"
 
-MemoryLump::MemoryLump(index_t size)
+MemoryFile::MemoryFile(index_t size)
 {
 	mSize = size;
 	mData = new byte[mSize];
 	mOffset = 0;
 }
 
-MemoryLump::~MemoryLump()
+MemoryFile::~MemoryFile()
 {
 	delete mData;
 }
 
-byte* MemoryLump::data()
+byte* MemoryFile::data()
 {
 	return mData;
 }
 
-const byte* MemoryLump::data() const
+const byte* MemoryFile::data() const
 {
 	return mData;
 }
 
-void MemoryLump::read(void *dest, index_t size)
+void MemoryFile::read(void *dest, index_t size)
 {
 	assert(size > 0);
 
@@ -34,7 +34,7 @@ void MemoryLump::read(void *dest, index_t size)
 	mOffset += size;
 }
 
-void MemoryLump::seek(fileoffset_t offset, int mode)
+void MemoryFile::seek(fileoffset_t offset, int mode)
 {
 	switch (mode)
 	{
@@ -61,7 +61,7 @@ void MemoryLump::seek(fileoffset_t offset, int mode)
 	}
 }
 
-fileoffset_t MemoryLump::tell() const
+fileoffset_t MemoryFile::tell() const
 {
 	return (fileoffset_t)mOffset;
 }

@@ -1,9 +1,9 @@
 #include "w_wad.h"
 
-#include "io_lump_file.h"
-#include "io_lump_memory.h"
+#include "io_file_systemfile.h"
+#include "io_file_memoryfile.h"
 
-Wad::Wad(unique_ptr<Lump> lump)
+Wad::Wad(unique_ptr<File> lump)
 {
 	mFile = std::move(lump);
 
@@ -126,17 +126,17 @@ void W_AddFile (char *filename)
 	{
 #define PRELOAD_WAD
 #ifdef PRELOAD_WAD
-		FileLump file(filename);
+		SystemFile file(filename);
 		file.seek(0, SEEK_END);
 		fileoffset_t size = file.tell();
 		file.seek(0, SEEK_SET);
 
-		unique_ptr<MemoryLump> preloaded(new MemoryLump(size));
+		unique_ptr<MemoryFile> preloaded(new MemoryFile(size));
 		file.read(preloaded->data(), size);
 
 		thewad = new Wad(std::move(preloaded));
 #else
-		thewad = new Wad(unique_ptr<Lump>(new FileLump(filename)));
+		thewad = new Wad(unique_ptr<File>(new SystemFile(filename)));
 #endif
 	}
 	catch (InputError &e)

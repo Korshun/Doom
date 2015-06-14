@@ -1,13 +1,13 @@
 #pragma once
 
-#include "io_lump.h"
+#include "io_file.h"
 
-// Lump that is an actual file on the system.
-class FileLump : public Lump
+// A file that is an actual file on the system.
+class SystemFile : public File
 {
 public:
-	FileLump(const std::string &path);
-	~FileLump();
+	SystemFile(const std::string &path);
+	~SystemFile();
 
 	void read(void *dest, index_t size) override;
 	void seek(fileoffset_t offset, int mode) override;

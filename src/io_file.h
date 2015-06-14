@@ -9,11 +9,11 @@
 typedef long int fileoffset_t;
 
 // Abstract file-like object class.
-// TODO: add lump name and path.
-class Lump
+// TODO: add name and path.
+class File
 {
 public:
-	virtual ~Lump();
+	virtual ~File();
 
 	// Read `size` bytes from file to `dest`.
 	// If a read fails, the position in the file becomes undefined
@@ -54,7 +54,7 @@ public:
 class InputError : Exception
 {
 public:
-	InputError(const Lump &lump, std::string error);
+	InputError(const File &lump, std::string error);
 	string toString() const override;
 
 private:
@@ -66,7 +66,7 @@ private:
 class UnexpectedEOFError : InputError
 {
 public:
-	UnexpectedEOFError(const Lump &lump);
+	UnexpectedEOFError(const File &lump);
 };
 
 // Exception

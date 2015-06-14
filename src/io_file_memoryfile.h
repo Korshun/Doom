@@ -1,16 +1,16 @@
 #pragma once
 
-#include "io_lump.h"
+#include "io_file.h"
 
-// In-memory lump.
-class MemoryLump : public Lump
+// In-memory file.
+class MemoryFile : public File
 {
 public:
 	// Create an uninitialized memory block of given size.
-	MemoryLump(index_t size);
+	MemoryFile(index_t size);
 
 	// Deallocate the data.
-	~MemoryLump();
+	~MemoryFile();
 
 	// Get pointer to data.
 	byte* data();
@@ -24,7 +24,7 @@ private:
 	// The data.
 	byte *mData;
 
-	// Size of the lump.
+	// Size of the file.
 	index_t mSize;
 
 	// Current position in the lump.

@@ -1,19 +1,19 @@
-#include "io_lump_file.h"
+#include "io_file_systemfile.h"
 
-FileLump::FileLump(const std::string &path)
+SystemFile::SystemFile(const std::string &path)
 {
 	mFile = fopen(path.c_str(), "rb");
 	if (mFile == NULL)
 		throw InputError(*this, format("failed to open file: {0}", strerror(errno)));
 }
 
-FileLump::~FileLump()
+SystemFile::~SystemFile()
 {
 	if (mFile != NULL)
 		fclose(mFile);
 }
 
-void FileLump::read(void *dest, index_t size)
+void SystemFile::read(void *dest, index_t size)
 {
 	assert(size > 0);
 	if (fread(dest, size, 1, mFile) != 1)
@@ -25,13 +25,13 @@ void FileLump::read(void *dest, index_t size)
 	}
 }
 
-fileoffset_t FileLump::tell() const
+fileoffset_t SystemFile::tell() const
 {
 	assert(ftell(mFile) >= 0);
 	return ftell(mFile);
 }
 
-void FileLump::seek(fileoffset_t offset, int mode)
+void SystemFile::seek(fileoffset_t offset, int mode)
 {
 	if (fseek(mFile, offset, mode) != 0)
 		throw InputError(*this, format("failed to move to offset {0}: {1}", offset, strerror(errno)));
