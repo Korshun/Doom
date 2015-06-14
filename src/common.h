@@ -7,6 +7,7 @@
 #include <memory>
 #include <utility>
 
+using std::string;
 using std::unique_ptr;
 
 // cppformat library.
@@ -26,6 +27,9 @@ typedef unsigned char byte;
 // Should be 32-bit or 64-bit depending on the system.
 // TODO: Add ifdef for 64-bit systems.
 typedef int index_t;
+
+// Macro for unused parameters.
+#define UNUSED(x) ((void)x)
 
 // These utilities are used everywhere.
 #include "u_exception.h"

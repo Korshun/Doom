@@ -1,10 +1,10 @@
 #include "w_wad.h"
 
-#include "w_file.h"
+#include "io_lump_file.h"
 
-Wad::Wad(unique_ptr<File> file)
+Wad::Wad(unique_ptr<Lump> lump)
 {
-	mFile = std::move(file);
+	mFile = std::move(lump);
 
 	char identification[4];
 	fileoffset_t dirOffset;
@@ -15,17 +15,17 @@ Wad::Wad(unique_ptr<File> file)
 
 	if (strncmp(identification, "IWAD", 4) && strncmp(identification, "PWAD", 4))
 	{
-		throw InputError(file->path(), "not a wad file");
+		throw InputError(*mFile, "not a wad file");
 	}
 
 	if (mNumLumps < 0)
 	{
-		throw InputError(file->path(), "negative number of lumps");
+		throw InputError(*mFile, "negative number of lumps");
 	}
 
 	if (dirOffset < 0)
 	{
-		throw InputError(file->path(), "negative lump directory offset");
+		throw InputError(*mFile, "negative lump directory offset");
 	}
 
 	mFile->seek(dirOffset);
@@ -46,12 +46,12 @@ Wad::Wad(unique_ptr<File> file)
 
 			if (info.dataOffset < 0)
 			{
-				throw InputError(file->path(), format("lump {0} has negative data offset", i));
+				throw InputError(*mFile, format("lump {0} has negative data offset", i));
 			}
 
 			if (info.size < 0)
 			{
-				throw InputError(file->path(), format("lump {0} has negative size", i));
+				throw InputError(*mFile, format("lump {0} has negative size", i));
 			}
 
 			mLumps.push_back(info);
@@ -123,7 +123,7 @@ void W_AddFile (char *filename)
 {
 	try
 	{
-		thewad = new Wad(unique_ptr<File>(new File(filename)));
+		thewad = new Wad(unique_ptr<Lump>(new FileLump(filename)));
 	}
 	catch (InputError &e)
 	{

@@ -5,22 +5,20 @@
 // Type for file offsets and sizes.
 // Should be 64-bit even on 32-bit systems.
 // If it is 32-bit, files over 2GB are not supported.
-typedef long long fileoffset_t;
+// TODO: redefine to support 64-bit offsets.
+typedef long int fileoffset_t;
 
-// Class for file reading.
-class File
+// Abstract file-like object class.
+// TODO: add lump name and path.
+class Lump
 {
 public:
-	File(const std::string &path);
-	~File();
-
-	// Get file path.
-	const std::string& path() const;
+	virtual ~Lump();
 
 	// Read `size` bytes from file to `dest`.
 	// If a read fails, the position in the file becomes undefined
 	// and InputError gets thrown.
-	void read(void *dest, index_t size);
+	virtual void read(void *dest, index_t size) = 0;
 
 	// Read one variable of type `T` from file.
 	template<typename T> T read()
@@ -31,7 +29,7 @@ public:
 	}
 
 	// Read fixed-size integer from file.
-	// Supports Litte-Endian and Big-Endian integers.
+	// Supports Little-Endian and Big-Endian integers.
 	byte   read8();
 	Sint16 read16le();
 	Sint32 read32le();
@@ -41,7 +39,7 @@ public:
 	Sint64 read64be();
 
 	// Get current position in the file.
-	fileoffset_t tell();
+	virtual fileoffset_t tell() const = 0;
 
 	// Set current position in the file.
 	// Mode must be one of the following:
@@ -49,9 +47,26 @@ public:
 	// SEEK_CUR
 	// SEEK_END
 	// If the seek fails, InputError is thrown.
-	void seek(fileoffset_t offset, int mode = SEEK_SET);
+	virtual void seek(fileoffset_t offset, int mode = SEEK_SET) = 0;
+};
+
+// Exception thrown when a read or seek fails.
+class InputError : Exception
+{
+public:
+	InputError(const Lump &lump, std::string error);
+	string toString() const override;
 
 private:
-	std::string mPath;
-	FILE *mFile;
+	// Error message.
+	string mError;
 };
+
+// Exception thrown when trying to read over the end of file.
+class UnexpectedEOFError : InputError
+{
+public:
+	UnexpectedEOFError(const Lump &lump);
+};
+
+// Exception

@@ -2,13 +2,13 @@
 
 #include "common.h"
 
-class File;
+class Lump;
 
 // Class for wad file reading.
 class Wad
 {
 public:
-	Wad(unique_ptr<File> file);
+	Wad(unique_ptr<Lump> lump);
 
 	// Get number of lumps.
 	index_t numLumps() const;
@@ -28,7 +28,7 @@ private:
 		index_t dataOffset;
 	};
 
-	unique_ptr<File> mFile;
+	unique_ptr<Lump> mFile;
 	std::vector<LumpInfo> mLumps;
 	index_t mNumLumps;
 };

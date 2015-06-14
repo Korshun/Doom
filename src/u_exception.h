@@ -4,21 +4,12 @@
 
 // Exception class for all exceptions in this engine.
 // Derived classes' names should end with "Error".
+//
+// std::exception sucks, what() returns const char* instead of string.
+// Why should I deal with error message memory management in exception handlers?
 class Exception
 {
 public:
 	virtual ~Exception() {}
-	virtual std::string toString() const = 0;
-};
-
-// Exception class for malformed or failed input.
-class InputError : public Exception
-{
-public:
-	InputError(std::string location, std::string error);
-	std::string toString() const;
-
-private:
-	std::string mLocation;
-	std::string mError;
+	virtual string toString() const = 0;
 };
