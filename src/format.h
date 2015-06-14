@@ -2431,7 +2431,7 @@ class FormatInt {
       // Integer division is slow so do it for a group of two digits instead
       // of for every digit. The idea comes from the talk by Alexandrescu
       // "Three Optimization Tips for C++". See speed-test for a comparison.
-      unsigned index = (value % 100) * 2;
+      unsigned index = (unsigned)((value % 100) * 2);
       value /= 100;
       *--buffer_end = internal::Data::DIGITS[index + 1];
       *--buffer_end = internal::Data::DIGITS[index];
