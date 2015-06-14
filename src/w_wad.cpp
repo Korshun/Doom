@@ -1,6 +1,7 @@
 #include "w_wad.h"
 
 #include "io_lump_file.h"
+#include "io_lump_memory.h"
 
 Wad::Wad(unique_ptr<Lump> lump)
 {
@@ -123,7 +124,20 @@ void W_AddFile (char *filename)
 {
 	try
 	{
+#define PRELOAD_WAD
+#ifdef PRELOAD_WAD
+		FileLump file(filename);
+		file.seek(0, SEEK_END);
+		fileoffset_t size = file.tell();
+		file.seek(0, SEEK_SET);
+
+		unique_ptr<MemoryLump> preloaded(new MemoryLump(size));
+		file.read(preloaded->data(), size);
+
+		thewad = new Wad(std::move(preloaded));
+#else
 		thewad = new Wad(unique_ptr<Lump>(new FileLump(filename)));
+#endif
 	}
 	catch (InputError &e)
 	{
