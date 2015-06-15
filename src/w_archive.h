@@ -59,7 +59,7 @@ public:
 	}
 
 	// Get information about the entry.
-	virtual string name() const = 0;
+	virtual const string& name() const = 0;
 	virtual index_t size() const = 0;
 
 	// Read whole entry to a memory buffer.

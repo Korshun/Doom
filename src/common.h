@@ -6,6 +6,8 @@
 
 #include <memory>
 #include <utility>
+#include <vector>
+#include <map>
 
 using std::string;
 using std::unique_ptr;

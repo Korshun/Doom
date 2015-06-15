@@ -11,12 +11,12 @@ WadArchive::WadArchive(unique_ptr<File> file)
 		throw InputError(*mFile, "not a wad file");
 
 	// Read number of lumps.
-	index_t numLumps = (index_t)file->read32le();
+	index_t numLumps = (index_t)mFile->read32le();
 	if (numLumps < 0)
 		throw InputError(*mFile, "negative number of lumps");
 
 	// Read directory offset.
-	fileoffset_t dirOffset = (fileoffset_t)file->read32le();
+	fileoffset_t dirOffset = (fileoffset_t)mFile->read32le();
 	if (dirOffset < 0)
 		throw InputError(*mFile, "negative directory offset");
 
@@ -90,7 +90,7 @@ WadEntry::WadEntry(WadArchive &archive, std::string name, index_t size, fileoffs
 	mDataOffset = dataOffset;
 }
 
-string WadEntry::name() const
+const string& WadEntry::name() const
 {
 	return mName;
 }

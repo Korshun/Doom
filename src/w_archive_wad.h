@@ -29,7 +29,7 @@ struct WadEntry : ArchiveEntry
 public:
 	WadEntry(WadArchive &archive, std::string name, index_t size, fileoffset_t dataOffset);
 
-	string name() const override;
+	const string& name() const override;
 	index_t size() const override;
 
 	void read(void *dest) override;
